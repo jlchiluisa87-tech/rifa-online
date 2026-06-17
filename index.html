@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gran Sorteo Día del Padre</title>
+
+<script>
+function copiarCuenta() {
+    navigator.clipboard.writeText("2205631275");
+    alert("✅ Número de cuenta copiado: 2205631275");
+}
+</script>
+
 </head>
 
 <body style="font-family:Arial; text-align:center; background:#f5f5f5;">
@@ -21,7 +28,12 @@
 
 <p><b>WhatsApp:</b> 0995250529</p>
 
-<p><b>Cuenta de transferencia:</b> 2205631275</p>
+<p>
+<b>Cuenta de transferencia:</b> 2205631275
+<button onclick="copiarCuenta()" style="padding:5px 10px; margin-left:5px;">
+📋 Copiar
+</button>
+</p>
 
 <p><b>Titular:</b> JOSE LUIS CHILUISA</p>
 
@@ -29,28 +41,3 @@
 
 <br>
 
-<a href="numeros.html">
-<button style="padding:15px;background:blue;color:white;font-size:18px;border:none;">
-Ver Cartilla de Números
-</button>
-</a>
-
-<br><br>
-
-<a href="https://wa.me/593995250529" target="_blank">
-<button style="padding:15px;background:green;color:white;font-size:18px;border:none;">
-Información por WhatsApp
-</button>
-</a>
-
-<br><br>
-<a href="administrador.html">
-
-<button style="padding:15px;background:black;color:white;font-size:18px;border:none;">
-📋 Ver Participantes
-</button>
-</a>
-
-</body>
-</html>
-                                                                    
