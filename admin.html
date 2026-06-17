@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Administrador</title>
+</head>
+
+<body style="font-family:Arial;text-align:center;">
+
+<h1>📋 Panel de Administración</h1>
+
+<h2>Participantes Registrados</h2>
+
+<table border="1" style="margin:auto;border-collapse:collapse;">
+<thead>
+<tr>
+<th>Número</th>
+<th>Nombre</th>
+<th>Teléfono</th>
+<th>Estado</th>
+</tr>
+</thead>
+
+<tbody id="tablaParticipantes">
+</tbody>
+
+</table>
+
+<br>
+
+<a href="index.html">
+<button style="padding:10px;background:red;color:white;border:none;">
+🏠 Volver al Inicio
+</button>
+</a>
+
+<script type="module">
+
+import { db } from "./firebase.js";
+
+import {
+collection,
+getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const tabla =
+document.getElementById("tablaParticipantes");
+
+const consulta =
+await getDocs(collection(db,"participantes"));
+
+consulta.forEach((doc)=>{
+
+const datos = doc.data();
+
+tabla.innerHTML += `
+<tr>
+<td>${datos.numero}</td>
+<td>${datos.nombre}</td>
+<td>${datos.telefono}</td>
+<td>${datos.estado}</td>
+</tr>
+`;
+
+});
+
+</script>
+
+</body>
+</html>
