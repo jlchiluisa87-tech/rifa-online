@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cartilla de Números</title>
+</head>
+<body style="font-family:Arial;text-align:center;">
+
+<h1>🎟️ CARTILLA DE NÚMEROS 🎟️</h1>
+
+<div id="cartilla"></div>
+
+<script>
+let html = "";
+
+for(let i=1;i<=500;i++){
+  html += `
+    <button style="
+      width:60px;
+      height:40px;
+      margin:3px;
+      font-size:16px;">
+      ${i}
+    </button>
+  `;
+}
+
+document.getElementById("cartilla").innerHTML = html;
+</script>
+
+</body>
+</html>
