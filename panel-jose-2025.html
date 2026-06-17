@@ -54,8 +54,7 @@ collection,
 getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const tabla =
-document.getElementById("tablaParticipantes");
+const tabla = document.getElementById("tablaParticipantes");
 
 const consulta =
 await getDocs(collection(db,"participantes"));
@@ -81,6 +80,13 @@ tabla.innerHTML += `
 
 document.getElementById("sortear").onclick = () => {
 
+const clave = prompt("Ingrese la clave de administrador");
+
+if(clave !== "Rifa2025"){
+alert("Clave incorrecta");
+return;
+}
+
 if(participantes.length === 0){
 alert("No hay participantes registrados");
 return;
@@ -103,4 +109,5 @@ document.getElementById("ganador").innerHTML =
 
 </body>
 </html>
+
 
