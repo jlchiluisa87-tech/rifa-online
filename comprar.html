@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -8,11 +9,11 @@
 
 <body style="font-family:Arial;text-align:center;">
 
-<h1>🎟 Comprar Número</h1>
+<h1>Comprar Número</h1>
 
 <h2 id="numeroSeleccionado"></h2>
 
-<form id="formulario">
+<form>
 
 <input
 type="text"
@@ -34,19 +35,39 @@ style="padding:10px;width:300px;"><br><br>
 <h3>Titular: JOSE LUIS CHILUISA</h3>
 
 <button
-type="submit"
+type="button"
+onclick="comprarNumero()"
 style="padding:15px;background:green;color:white;font-size:18px;">
-Ya realicé el pago
-</button>
+Ya realicé el pago </button>
 
 </form>
 
 <script>
+
 const parametros = new URLSearchParams(window.location.search);
 const numero = parametros.get("numero");
 
 document.getElementById("numeroSeleccionado").innerText =
 "Número seleccionado: " + numero;
+
+function comprarNumero(){
+
+const nombre = document.getElementById("nombre").value;
+const telefono = document.getElementById("telefono").value;
+
+if(nombre==="" || telefono===""){
+alert("Complete todos los datos");
+return;
+}
+
+localStorage.setItem("numero_"+numero,"vendido");
+
+alert("Compra registrada correctamente");
+
+window.location.href="numeros.html";
+
+}
+
 </script>
 
 </body>
