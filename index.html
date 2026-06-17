@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -6,9 +7,16 @@
 <title>Gran Sorteo Día del Padre</title>
 
 <script>
-function copiarCuenta() {
-    navigator.clipboard.writeText("2205631275");
-    alert("✅ Número de cuenta copiado: 2205631275");
+function copiarDatos() {
+
+const datos =
+"Banco Pichincha\n" +
+"Cuenta: 2205631275\n" +
+"Titular: JOSE LUIS CHILUISA";
+
+navigator.clipboard.writeText(datos);
+
+alert("✅ Datos bancarios copiados");
 }
 </script>
 
@@ -28,16 +36,50 @@ function copiarCuenta() {
 
 <p><b>WhatsApp:</b> 0995250529</p>
 
-<p>
-<b>Cuenta de transferencia:</b> 2205631275
-<button onclick="copiarCuenta()" style="padding:5px 10px; margin-left:5px;">
-📋 Copiar
-</button>
+<div style="background:white;display:inline-block;padding:15px;border-radius:10px;box-shadow:0 0 10px #ccc;">
+
+<h3>🏦 Banco Pichincha</h3>
+
+<p><b>Cuenta de transferencia:</b><br>
+<span style="font-size:24px;color:#0033A0;">
+2205631275
+</span>
 </p>
 
 <p><b>Titular:</b> JOSE LUIS CHILUISA</p>
 
+<button onclick="copiarDatos()"
+style="padding:12px;background:#ff9800;color:white;border:none;border-radius:6px;font-size:16px;cursor:pointer;">
+📋 Copiar Datos Bancarios </button>
+
+</div>
+
 <h3>Escanea el QR para realizar el pago</h3>
 
-<br>
+<br><br>
+
+<a href="numeros.html">
+<button style="padding:15px;background:blue;color:white;font-size:18px;border:none;">
+Ver Cartilla de Números
+</button>
+</a>
+
+<br><br>
+
+<a href="https://wa.me/593995250529" target="_blank">
+<button style="padding:15px;background:green;color:white;font-size:18px;border:none;">
+Información por WhatsApp
+</button>
+</a>
+
+<br><br>
+
+<a href="administrador.html">
+<button style="padding:15px;background:black;color:white;font-size:18px;border:none;">
+📋 Ver Participantes
+</button>
+</a>
+
+</body>
+</html>
 
