@@ -1,62 +1,47 @@
-<!DOCTYPE html>
+<script type="module">
 
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cartilla de Números</title>
-</head>
+import { db } from "./firebase.js";
 
-<body style="font-family:Arial;text-align:center;background:#f5f5f5;">
-
-<h1>🎟️ CARTILLA DE NÚMEROS 🎟️</h1>
-
-<a href="index.html">
-<button style="padding:10px;background:red;color:white;border:none;">
-Volver al Inicio
-</button>
-</a>
-
-<br><br>
-
-<div id="cartilla" style="
-display:grid;
-grid-template-columns:repeat(10,1fr);
-gap:5px;
-max-width:700px;
-margin:auto;">
-</div>
-
-<script>
+import {
+collection,
+getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const cartilla = document.getElementById("cartilla");
 
-for (let i = 1; i <= 500; i++) {
+const vendidos = [];
 
-  const numero = document.createElement("button");
+const consulta = await getDocs(
+collection(db,"participantes")
+);
 
-  numero.innerText = i;
+consulta.forEach((doc) => {
+vendidos.push(doc.data().numero);
+});
 
-  numero.style.padding = "10px";
-  numero.style.color = "white";
-  numero.style.border = "none";
-  numero.style.cursor = "pointer";
+for(let i=1;i<=500;i++){
 
-  if(localStorage.getItem("numero_" + i) === "vendido"){
-      numero.style.background = "red";
-      numero.disabled = true;
-  } else {
-      numero.style.background = "#28a745";
-  }
+const numero = document.createElement("button");
 
-  numero.onclick = function() {
-      window.location.href = "comprar.html?numero=" + i;
-  };
+numero.innerText = i;
 
-  cartilla.appendChild(numero);
+numero.style.padding="10px";
+numero.style.color="white";
+numero.style.border="none";
+
+if(vendidos.includes(i)){
+numero.style.background="red";
+numero.disabled=true;
+}else{
+numero.style.background="#28a745";
+numero.onclick=()=>{
+window.location.href=
+"comprar.html?numero="+i;
+};
+}
+
+cartilla.appendChild(numero);
+
 }
 
 </script>
-
-</body>
-</html>
