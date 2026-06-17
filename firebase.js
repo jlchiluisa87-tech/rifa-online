@@ -1,87 +1,17 @@
-<!DOCTYPE html>
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comprar Número</title>
-</head>
-
-<body style="font-family:Arial;text-align:center;">
-
-<h1>Comprar Número</h1>
-
-<h2 id="numeroSeleccionado"></h2>
-
-<form id="formulario">
-
-<input
-type="text"
-id="nombre"
-placeholder="Nombre completo"
-required
-style="padding:10px;width:300px;"><br><br>
-
-<input
-type="tel"
-id="telefono"
-placeholder="Teléfono"
-required
-style="padding:10px;width:300px;"><br><br>
-
-<img src="nombre_nuevo.png" width="300"><br><br>
-
-<h3>Cuenta: 2205631275</h3>
-<h3>Titular: JOSE LUIS CHILUISA</h3>
-
-<button type="submit"
-style="padding:15px;background:green;color:white;font-size:18px;">
-Ya realicé el pago </button>
-
-</form>
-
-<script type="module">
-
-import { db } from "./firebase.js";
-
-import {
-collection,
-addDoc
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const parametros = new URLSearchParams(window.location.search);
-const numero = parametros.get("numero");
-
-document.getElementById("numeroSeleccionado").innerText =
-"Numero seleccionado: " + numero;
-
-document.getElementById("formulario").onsubmit = async (e) => {
-
-e.preventDefault();
-
-const nombre =
-document.getElementById("nombre").value;
-
-const telefono =
-document.getElementById("telefono").value;
-
-await addDoc(
-collection(db,"participantes"),
-{
-nombre:nombre,
-telefono:telefono,
-numero:Number(numero),
-estado:"compró"
-}
-);
-
-alert("Número reservado correctamente");
-
-window.location.href="numeros.html";
-
+const firebaseConfig = {
+  apiKey: "AIzaSyA0St-pT_TerHg2ZeM-ELtVbHPbWRVCi9I",
+  authDomain: "rifa-dia-padre.firebaseapp.com",
+  projectId: "rifa-dia-padre",
+  storageBucket: "rifa-dia-padre.firebasestorage.app",
+  messagingSenderId: "515111519900",
+  appId: "1:515111519900:web:abc7f5d59fa29c9e11cf59",
+  measurementId: "G-PMT83HWC1R"
 };
 
-</script>
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-</body>
-</html>
+export { db };
