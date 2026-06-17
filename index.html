@@ -33,5 +33,41 @@
     </a>
 
     <script type="module" src="firebase.js"></script>
+    <h2>Números disponibles</h2>
+
+<div id="cartilla"
+style="
+display:grid;
+grid-template-columns:repeat(10,1fr);
+gap:5px;
+max-width:700px;
+margin:auto;">
+</div>
+
+<script>
+const cartilla = document.getElementById("cartilla");
+
+for(let i=1; i<=500; i++){
+
+  const numero = document.createElement("button");
+
+  numero.innerText = i;
+
+  numero.style.padding = "10px";
+  numero.style.background = "#28a745";
+  numero.style.color = "white";
+  numero.style.border = "none";
+  numero.style.cursor = "pointer";
+
+  numero.onclick = () => {
+      window.open(
+      "https://wa.me/593995250529?text=Hola,%20quiero%20reservar%20el%20número%20"+i,
+      "_blank"
+      );
+  };
+
+  cartilla.appendChild(numero);
+}
+</script>
 </body>
 </html>
