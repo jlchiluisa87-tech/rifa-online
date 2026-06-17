@@ -2,30 +2,58 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cartilla de Números</title>
 </head>
+
 <body style="font-family:Arial;text-align:center;">
 
 <h1>🎟️ CARTILLA DE NÚMEROS 🎟️</h1>
 
-<div id="cartilla"></div>
+<a href="index.html">
+<button style="padding:10px;background:red;color:white;">
+Volver al Inicio
+</button>
+</a>
+
+<br><br>
+
+<div id="cartilla"
+style="
+display:grid;
+grid-template-columns:repeat(10,1fr);
+gap:5px;
+max-width:700px;
+margin:auto;">
+</div>
 
 <script>
-let html = "";
+
+const cartilla = document.getElementById("cartilla");
 
 for(let i=1;i<=500;i++){
-  html += `
-    <button style="
-      width:60px;
-      height:40px;
-      margin:3px;
-      font-size:16px;">
-      ${i}
-    </button>
-  `;
+
+const numero=document.createElement("button");
+
+numero.innerText=i;
+
+numero.style.padding="10px";
+numero.style.background="#28a745";
+numero.style.color="white";
+numero.style.border="none";
+numero.style.cursor="pointer";
+
+numero.onclick=()=>{
+window.open(
+"https://wa.me/593995250529?text=Hola,%20quiero%20reservar%20el%20número%20"+i,
+"_blank"
+);
+};
+
+cartilla.appendChild(numero);
+
 }
 
-document.getElementById("cartilla").innerHTML = html;
 </script>
 
 </body>
