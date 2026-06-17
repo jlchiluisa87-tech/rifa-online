@@ -13,7 +13,7 @@
 
 <h2 id="numeroSeleccionado"></h2>
 
-<form>
+<form id="formulario">
 
 <input
 type="text"
@@ -34,41 +34,55 @@ style="padding:10px;width:300px;"><br><br>
 <h3>Cuenta: 2205631275</h3>
 <h3>Titular: JOSE LUIS CHILUISA</h3>
 
-<button
-type="button"
-onclick="comprarNumero()"
+<button type="submit"
 style="padding:15px;background:green;color:white;font-size:18px;">
 Ya realicé el pago </button>
 
 </form>
 
-<script>
+<script type="module">
+
+import { db } from "./firebase.js";
+
+import {
+collection,
+addDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const parametros = new URLSearchParams(window.location.search);
 const numero = parametros.get("numero");
 
 document.getElementById("numeroSeleccionado").innerText =
-"Número seleccionado: " + numero;
+"Numero seleccionado: " + numero;
 
-function comprarNumero(){
+document.getElementById("formulario").onsubmit = async (e) => {
 
-const nombre = document.getElementById("nombre").value;
-const telefono = document.getElementById("telefono").value;
+e.preventDefault();
 
-if(nombre==="" || telefono===""){
-alert("Complete todos los datos");
-return;
+const nombre =
+document.getElementById("nombre").value;
+
+const telefono =
+document.getElementById("telefono").value;
+
+await addDoc(
+collection(db,"participantes"),
+{
+nombre:nombre,
+telefono:telefono,
+numero:Number(numero),
+estado:"compró"
 }
+);
 
-localStorage.setItem("numero_"+numero,"vendido");
-
-alert("Compra registrada correctamente");
+alert("Número reservado correctamente");
 
 window.location.href="numeros.html";
 
-}
+};
 
 </script>
 
 </body>
 </html>
+
